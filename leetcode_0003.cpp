@@ -1,4 +1,26 @@
-class Solution {
+class Solution_dp {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int char_set[128];      // Store the last-seen-index of the char in s.
+        fill(char_set, char_set+128, -1);
+        int str_start_index = -1;
+        int max_len = 0;
+        for(int i = 0; i < s.length(); ++i) {
+            int char_index = s[i];
+            // The character is already in the sub-string.
+            if(char_set[char_index] > str_start_index) {
+                // Set str_start_index to the last-seen-index of current character.
+                str_start_index = char_set[char_index];
+            }
+            max_len = max(max_len, i - str_start_index);
+            char_set[char_index] = i;
+        }
+        return max_len;
+    }
+};
+
+
+class Solution_double_pointerr {
 public:
     int lengthOfLongestSubstring(string s) {
         if(!s.length()) {

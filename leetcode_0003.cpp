@@ -1,8 +1,8 @@
-class Solution_dp {
+class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int char_set[128];      // Store the last-seen-index of the char in s.
-        fill(char_set, char_set+128, -1);
+        memset(char_set, -1, sizeof(char_set));
         int str_start_index = -1;
         int max_len = 0;
         for(int i = 0; i < s.length(); ++i) {

@@ -4,7 +4,7 @@ public:
         if(!s.length()) {
             return 0;
         }
-        set<char> char_set;
+        unordered_set<char> char_set;
         int max_len = 0;
         int left = 0;
         for(int right = left; right < s.length(); ++right) {

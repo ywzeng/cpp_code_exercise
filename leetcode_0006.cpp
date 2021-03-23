@@ -1,7 +1,7 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        if(s.length() <= numRows) return s;
+        if(s.length() <= numRows || numRows == 1) return s;
         vector<string> res_vec;
         for (int i = 0; i < numRows; ++i) {
             res_vec.push_back(string(""));
@@ -14,14 +14,14 @@ public:
                 if (str_index < numRows - 1) {
                     ++str_index;
                 } else {
-                    str_index = str_index == 0 && numRows == 1 ? 0 : str_index - 1;
+                    --str_index;
                     direction = false;
                 }
             } else {
                 if (str_index > 0) {
                     --str_index;
                 } else {
-                    str_index = str_index == 0 && numRows == 1 ? 0 : str_index + 1;
+                    ++str_index;
                     direction = true;
                 }
             }

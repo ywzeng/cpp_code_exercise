@@ -1,3 +1,32 @@
+class Solution_CenterExpand {
+public:
+    string longestPalindrome(string s) {
+        if (s.length() < 2) return s;
+        int max_len = 1;
+        string res_str = s.substr(0, 1);
+        for (int i = 0; i < s.length(); ++i) {
+            string even_str = center_expand(s, i, i + 1);
+            string odd_str = center_expand(s, i, i);
+            string long_str = even_str.length() > odd_str.length() ? even_str : odd_str;
+            if (long_str.length() > max_len) {
+                max_len = long_str.length();
+                res_str = long_str;
+            }
+        }
+        return res_str;
+    }
+
+private:
+    string center_expand(string s, int left, int right) {
+        while (left >= 0 && right < s.length() && s[left] == s[right]) {
+            --left;
+            ++right;
+        }
+        // When jump out of the while loop, `left` is not equal to `right`. The valid range is actually [left + 1, right - 1].
+        return s.substr(left + 1, right - left - 1);
+    }
+};
+
 class Solution_DP {
 public:
     string longestPalindrome(string s) {

@@ -11,7 +11,6 @@ public:
     /** Initialize your data structure here. */
     Trie() {
         root_node = new TrieNode();
-        root_node->is_end = false;
     }
     
     /** Inserts a word into the trie. */
